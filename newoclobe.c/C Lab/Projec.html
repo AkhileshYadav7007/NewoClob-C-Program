@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+
+#define MAX_SIZE 100
+
+
+struct List {
+    int array[MAX_SIZE];
+    int size;
+};
+
+
+void initializeList(struct List *list) {
+    list->size = 0;
+}
+
+
+void insertAtEnd(struct List *list, int value) {
+    if (list->size < MAX_SIZE) {
+        list->array[list->size] = value;
+        list->size++;
+        printf("Element %d inserted successfully.\n", value);
+    } else {
+        printf("List is full. Cannot insert element.\n");
+    }
+}
+
+
+void displayList(struct List *list) {
+    printf("List elements: ");
+    for (int i = 0; i < list->size; ++i) {
+        printf("%d ", list->array[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct List myList;
+    initializeList(&myList);
+
+    insertAtEnd(&myList, 5);
+    insertAtEnd(&myList, 10);
+    insertAtEnd(&myList, 15);
+
+    displayList(&myList);
+
+    return 0;
+}
